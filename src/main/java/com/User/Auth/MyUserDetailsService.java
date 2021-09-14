@@ -1,7 +1,7 @@
 package com.User.Auth;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
+import java.util.ArrayList;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class MyUserDetailsService implements UserDetailsService{
 
-	@Autowired
+	@Override
+	public User loadUserByUsername(String username) throws UsernameNotFoundException {
+		return new User("Jack","pass",new ArrayList<>());
+	}
+
+	/*@Autowired
 	private UserRepository repo;
 	
 	@Override
@@ -22,6 +27,6 @@ public class MyUserDetailsService implements UserDetailsService{
 		
 		return new MyUserDetails(user);
 		
-	}
+	}*/
 
 }
